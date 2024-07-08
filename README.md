@@ -26,16 +26,23 @@ o sistema visa otimizar e automatizar o processo de recebimento, processamento e
   Foi utilizado o entity framework como ORM com a solução em memória, Flur.HTTP para facilitar as requisições aos links que foram passados, além do Mock para os testes unitários;
 </p>
 
-## Arquitetura
+## Observações
 
 <p align="justify">
-  Foi implementado o modelo de arquitetura hexagonal, aonde é separado os adaptadores por driven (acesso externo para a API) e driving (acesso da API para o externo). 
-  Além do Core da aplicação com os modelos e a Application responsável pela regra de negócio. Tal modelo facilita a escalabilidade do projeto e o acoplamento de novas features;
-  (ex: filas(consumer/producer), novo database, nova consulta api externa).
+  Para o projeto, foi utilizado o banco de dados PostgreSQL, pois ele é adequado para um projeto que não terá um volume massivo de dados. Além disso, a maioria das plataformas em nuvem oferece suporte ao PostgreSQL, e a ferramenta possui uma grande comunidade devido ao seu caráter open-source.
+
+Decidi modelar as tabelas de pedidos e opções_pizza separadamente para permitir o cadastro individual e a relação entre elas através de uma terceira tabela chamada pedido_opcoes_pizza. Também criei uma tabela adicional para armazenar os endereços associados aos pedidos.
+
+Foi utilizado o Entity Framework como ORM para facilitar as operações com o banco de dados, FluentValidation para validar as regras de cadastro dos itens necessários, Swagger para documentação.
+
+Pontos de Melhoria:
+Adicionar ingredientes no cadastro de opções de pizza.
+Validar o status do pedido, impedindo, por exemplo, que um pedido com status "Em entrega" volte para "Registrado".
+Implementar filtro e paginação na listagem das opções de pizza.
+Adicionar autenticação.
+Gerenciar transações com begin transaction para garantir maior consistência dos dados.
+
 </p>
-
-<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*vz61CjLHGfiZ-P0IGXD9zg.png">
-
 
 ## Pré-requisitos
 
@@ -46,11 +53,11 @@ o sistema visa otimizar e automatizar o processo de recebimento, processamento e
 
 ```Bash
 
-git clone https://github.com/AngeloRNeto/JuntosSomosMais.CodeChallenge.git
+git clone https://github.com/AngeloRNeto/hungry-pizza.git
 
-cd JuntosSomosMais.CodeChallenge
+cd hungry-pizza
+cd src
 nuget install # Baixe as dependencias
-dotnet test # Realiza os testes unitários 
 dotnet run # Executa a aplicação
 
 ```
