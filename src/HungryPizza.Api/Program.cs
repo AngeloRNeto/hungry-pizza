@@ -3,10 +3,20 @@ using HungryPizza.Api.Mapping;
 using HungryPizza.Data;
 using HungryPizza.Infrastructure;
 using System.Text.Json.Serialization;
+using FluentValidation.AspNetCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+builder.Services
+    .AddControllers()
+    .AddFluentValidation(v =>
+    {
+        v.ImplicitlyValidateChildProperties = true;
+        v.ImplicitlyValidateRootCollectionElements = true;
+        v.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+    }).AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
