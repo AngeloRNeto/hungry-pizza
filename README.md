@@ -36,12 +36,13 @@ Decidi modelar as tabelas de pedidos e opções_pizza separadamente para permiti
 Foi utilizado o Entity Framework como ORM para facilitar as operações com o banco de dados, FluentValidation para validar as regras de cadastro dos itens necessários, Swagger para documentação.
 
 Pontos de Melhoria:
-Adicionar ingredientes no cadastro de opções de pizza.
-Validar o status do pedido, impedindo, por exemplo, que um pedido com status "Em entrega" volte para "Registrado".
-Implementar filtro e paginação na listagem das opções de pizza.
-Adicionar autenticação.
-Gerenciar transações com begin transaction para garantir maior consistência dos dados.
-
+<ul> 
+  <li>Adicionar ingredientes no cadastro de opções de pizza.</li>
+  <li>Validar o status do pedido, impedindo, por exemplo, que um pedido com status "Em entrega" volte para "Registrado".</li>
+  <li>Implementar filtro e paginação na listagem das opções de pizza.</li>
+  <li>Adicionar autenticação.</li>
+  <li>Gerenciar transações com begin transaction para garantir maior consistência dos dados.</li>
+</ul>
 </p>
 
 ## Pré-requisitos
