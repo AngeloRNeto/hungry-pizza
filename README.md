@@ -23,7 +23,7 @@ o sistema visa otimizar e automatizar o processo de recebimento, processamento e
 
 ## Tecnologias
 <p align="justify">
-  Foi utilizado o entity framework como ORM com a solução em memória, Flur.HTTP para facilitar as requisições aos links que foram passados, além do Mock para os testes unitários;
+ Foi utilizado o Entity Framework como ORM para facilitar as operações com o banco de dados, FluentValidation para validar as regras de cadastro dos itens necessários, Swagger para documentação.
 </p>
 
 ## Observações
@@ -32,8 +32,6 @@ o sistema visa otimizar e automatizar o processo de recebimento, processamento e
   Para o projeto, foi utilizado o banco de dados PostgreSQL, pois ele é adequado para um projeto que não terá um volume massivo de dados. Além disso, a maioria das plataformas em nuvem oferece suporte ao PostgreSQL, e a ferramenta possui uma grande comunidade devido ao seu caráter open-source.
 
 Decidi modelar as tabelas de pedidos e opções_pizza separadamente para permitir o cadastro individual e a relação entre elas através de uma terceira tabela chamada pedido_opcoes_pizza. Também criei uma tabela adicional para armazenar os endereços associados aos pedidos.
-
-Foi utilizado o Entity Framework como ORM para facilitar as operações com o banco de dados, FluentValidation para validar as regras de cadastro dos itens necessários, Swagger para documentação.
 
 Pontos de Melhoria:
 <ul> 
